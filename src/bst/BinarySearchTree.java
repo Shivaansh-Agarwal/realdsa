@@ -59,6 +59,43 @@ public class BinarySearchTree {
         return current;
     }
 
+    public void printBST(BSTTraversalType type) {
+        if (type == BSTTraversalType.IN_ORDER) {
+            System.out.println("\nIN_ORDER Traversal");
+            printInOrder(root);
+            System.out.println(); 
+        } else if (type == BSTTraversalType.PRE_ORDER) {
+            System.out.println("\nPRE_ORDER Traversal");
+            printPreOrder(root);
+            System.out.println();
+        } else if (type == BSTTraversalType.POST_ORDER) {
+            System.out.println("\nPOST_ORDER Traversal");
+            printPostOrder(root);
+            System.out.println();
+        }
+    }
+
+    private void printInOrder(Node node) {
+        if (node == null) return;
+        printInOrder(node.left);
+        System.out.print(node.value + " ");
+        printInOrder(node.right);
+    }
+
+    private void printPreOrder(Node node) {
+        if (node == null) return;
+        System.out.print(node.value + " ");
+        printPreOrder(node.left);
+        printPreOrder(node.right);
+    }
+
+    private void printPostOrder(Node node) {
+        if (node == null) return;
+        printPostOrder(node.left);
+        printPostOrder(node.right);
+        System.out.print(node.value + " ");
+    }
+
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
         // Let's build the tree: 50, 30, 20, 40, 70, 60, 80
@@ -70,5 +107,14 @@ public class BinarySearchTree {
         bst.insert(60);
         bst.insert(80);
         System.out.println("Tree created successfully.");
+
+        bst.printBST(BSTTraversalType.PRE_ORDER);
+        bst.printBST(BSTTraversalType.IN_ORDER);
+        bst.printBST(BSTTraversalType.POST_ORDER);
     }
+}
+enum BSTTraversalType {
+    PRE_ORDER,
+    IN_ORDER,
+    POST_ORDER;
 }
