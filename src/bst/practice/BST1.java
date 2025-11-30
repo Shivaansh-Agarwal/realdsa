@@ -1,4 +1,4 @@
-class BinarySearchTree {
+class BST1 {
     private class Node {
         int key;
         Node left, right;
@@ -10,7 +10,7 @@ class BinarySearchTree {
 
     private Node root;
 
-    public BinarySearchTree() {
+    public BST1() {
         root = null;
     }
 
@@ -139,7 +139,7 @@ enum TraversalTypeEnum {
 
 class Solution {
     public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
+        BST1 bst = new BST1();
 
         bst.insert(20);
         bst.insert(10);
