@@ -162,6 +162,21 @@ class BinarySearchTree {
         return curr;
     }
 
+    public void height() {
+        int h = this.height(root);
+        System.out.println("HEIGHT: " + h);
+    }
+
+    private int height(Node root) {
+        if (root == null) {
+            return -1;
+        }
+        int lHeight = height(root.left);
+        int rHeight = height(root.right);
+
+        return Math.max(lHeight, rHeight) + 1;
+    }
+
 }
 
 enum TraversalTypeEnum {
@@ -178,6 +193,10 @@ class Solution {
         bst.insert(10);
         bst.insert(40);
         bst.insert(30);
+        bst.insert(90);
+        bst.insert(100);
+        bst.insert(22);
+        bst.insert(150);
 
         bst.print(TraversalTypeEnum.IN_ORDER);
         bst.print(TraversalTypeEnum.PRE_ORDER);
@@ -185,5 +204,7 @@ class Solution {
 
         bst.search(10);
         bst.search(22);
+
+        bst.height();
     }
 }
